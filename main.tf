@@ -35,7 +35,7 @@ resource "aws_s3_bucket_versioning" "site" {
 
 # --- CloudFront OAC (modern replacement for OAI) ---
 resource "aws_cloudfront_origin_access_control" "oac" {
-  name                              = "${var.project_name}-oac"
+  name                              = "${var.project_name}-oac-${random_id.suffix.hex}"
   description                       = "OAC for private S3 origin"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
